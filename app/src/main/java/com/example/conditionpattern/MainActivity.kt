@@ -1,9 +1,14 @@
 package com.example.conditionpattern
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.NumberPicker
+import com.example.conditionpattern.behaviors.StartFirstActivity
+import com.example.conditionpattern.behaviors.StartSecondActivity
+import kotlin.system.measureTimeMillis
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,8 +23,11 @@ class MainActivity : AppCompatActivity() {
         pick?.maxValue = 2 // can be anything you want, for example 100
 
         findViewById<Button>(R.id.selectNumberButton).setOnClickListener {
-            val setting = Setting(ChangeState(this@MainActivity), pick!!.value)
-            setting.doStrategy()
+            val time = measureTimeMillis {
+                val setting = PolicyContext(pick!!.value, this@MainActivity)
+//                setting.executeFirstActivity()
+            }
+            Log.e("selectNumberButton", "$time")
         }
     }
 }

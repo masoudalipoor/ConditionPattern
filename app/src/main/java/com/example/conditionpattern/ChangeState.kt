@@ -4,15 +4,19 @@ import android.content.Context
 import android.content.Intent
 
 
-class ChangeState constructor(var context: Context) : Condition {
+class ChangeState  {
 
-    override fun action(activityNumber: Int) {
+//    override fun actionn(context: Context, activityNumber: Int, cl: Class<*>) {
+//        super.actionn(context, activityNumber, cl)
+//    }
 
-        when (activityNumber) {
-            1 ->
-            { context.startActivity(Intent(context, FirstActivity::class.java)) }
-            2 ->
-            { context.startActivity(Intent(context, SecondActivity::class.java)) }
-        }
-    }
+//    override fun action(activityNumber: Int, context: Context) {
+//
+//        when (activityNumber) {
+//            1 ->
+//            { context.startActivity(Intent(context, FirstActivity::class.java)) }
+//            2 ->
+//            { context.startActivity(Intent(context, SecondActivity::class.java)) }
+//        }
+//    }
 }
