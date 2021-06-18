@@ -4,15 +4,6 @@ import android.content.Context
 
 interface Policy {
 
-//    fun shiftActivity(context: Context, cl: Class<*>) {
-//        context.startActivity(Intent(context, cl))
-//        Log.e("shiftActivity : ", "$cl")
-//    }
+    fun shiftActivity(context: Context)
 
-    fun value(): Boolean
-    fun shiftActivity(context: Context, cl: Class<*>)
-
-    fun shiftFragment() {
-
-    }
 }

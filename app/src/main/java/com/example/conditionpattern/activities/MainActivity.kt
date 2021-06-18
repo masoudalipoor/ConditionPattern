@@ -24,8 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.selectNumberButton).setOnClickListener {
             val time = measureTimeMillis {
-                val setting = PolicyContext(pick!!.value, this@MainActivity)
+                val policy = PolicyContext(this@MainActivity, StartSecondActivity())
+//                policy.startFirstActivity()
+//                val setting = PolicyContext(pick!!.value, this@MainActivity)
 //                setting.executeFirstActivity()
+//                setting.executeSecondActivity()
             }
             Log.e("selectNumberButton", "$time")
         }
