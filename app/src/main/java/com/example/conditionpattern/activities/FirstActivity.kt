@@ -2,6 +2,7 @@ package com.example.conditionpattern.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.conditionpattern.Content
 import com.example.conditionpattern.PolicyContext
 import com.example.conditionpattern.R
 import com.example.conditionpattern.behaviors.StartMainActivity
@@ -23,7 +24,7 @@ class FirstActivity : AppCompatActivity() {
          * onclick
          */
         firstRunnerMainActivityButton.setOnClickListener {
-            policy = PolicyContext(this@FirstActivity, StartMainActivity())
+            policy = PolicyContext(this@FirstActivity, StartMainActivity(), Content.MAIN_ACTIVITY_NUMBER)
             policy.execute()
         }
 
@@ -31,7 +32,7 @@ class FirstActivity : AppCompatActivity() {
          * onclick
          */
         firstRunnerSecondActivityButton.setOnClickListener {
-            policy = PolicyContext(this@FirstActivity, StartSecondActivity())
+            policy = PolicyContext(this@FirstActivity, StartSecondActivity(), Content.SECOND_ACTIVITY_NUMBER)
             policy.execute()
         }
 
@@ -39,7 +40,7 @@ class FirstActivity : AppCompatActivity() {
          * onclick
          */
         firstRunnerThirdActivityButton.setOnClickListener {
-            policy = PolicyContext(this@FirstActivity, StartThirdActivity())
+            policy = PolicyContext(this@FirstActivity, StartThirdActivity(), Content.THIRD_ACTIVITY_NUMBER)
             policy.execute()
         }
     }

@@ -1,36 +1,52 @@
-package com.example.conditionpattern
+package com.example.conditionpattern.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.NumberPicker
+import com.example.conditionpattern.Content
+import com.example.conditionpattern.PolicyContext
+import com.example.conditionpattern.R
 import com.example.conditionpattern.behaviors.StartFirstActivity
 import com.example.conditionpattern.behaviors.StartSecondActivity
+import com.example.conditionpattern.behaviors.StartThirdActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.system.measureTimeMillis
 
 class MainActivity : AppCompatActivity() {
 
-    private var pick: NumberPicker ?= null
+    lateinit var policy: PolicyContext
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pick = findViewById(R.id.numberPicker)
-        pick?.minValue = 1 // can be anything you want, for example 50
-        pick?.maxValue = 2 // can be anything you want, for example 100
-
-        findViewById<Button>(R.id.selectNumberButton).setOnClickListener {
+        /**
+         * onclick
+         */
+        mainRunnerFirstActivityButton.setOnClickListener {
             val time = measureTimeMillis {
-                val policy = PolicyContext(this@MainActivity, StartSecondActivity())
-//                policy.startFirstActivity()
-//                val setting = PolicyContext(pick!!.value, this@MainActivity)
-//                setting.executeFirstActivity()
-//                setting.executeSecondActivity()
+                policy = PolicyContext(this@MainActivity, StartFirstActivity(), Content.FIRST_ACTIVITY_NUMBER)
+                policy.execute()
             }
-            Log.e("selectNumberButton", "$time")
+            Log.e("click", "$time")
+        }
+
+        /**
+         * onclick
+         */
+        mainRunnerSecondActivityButton.setOnClickListener {
+            policy = PolicyContext(this@MainActivity, StartSecondActivity(), Content.SECOND_ACTIVITY_NUMBER)
+            policy.execute()
+        }
+
+        /**
+         * onclick
+         */
+        mainRunnerThirdActivityButton.setOnClickListener {
+            policy = PolicyContext(this@MainActivity, StartThirdActivity(), Content.THIRD_ACTIVITY_NUMBER)
+            policy.execute()
         }
     }
 }
